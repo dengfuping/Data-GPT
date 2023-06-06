@@ -19,10 +19,10 @@ export default [
             path: 'instance',
             component: 'Instance',
           },
-          // {
-          //   path: 'chat',
-          //   component: 'Chat',
-          // },
+          {
+            path: 'chat',
+            component: 'Chat',
+          },
         ],
       },
     ],

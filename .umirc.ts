@@ -14,6 +14,7 @@ export default defineConfig({
     default: 'en-US',
     baseSeparator: '-',
   },
+  esbuildMinifyIIFE: true,
   chainWebpack: (config) => {
     config.plugin('monaco-editor').use(MonacoWebpackPlugin);
     // 静态资源的文件限制调整为 1GB，避免视频等大文件资源阻塞项目启动
