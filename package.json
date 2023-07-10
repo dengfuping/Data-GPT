@@ -12,11 +12,13 @@
   "dependencies": {
     "@oceanbase/charts": "^0.2.5",
     "@oceanbase/design": "^0.2.11",
+    "@oceanbase/icons": "^0.2.2",
     "@oceanbase/ui": "^0.2.12",
     "@oceanbase/util": "^0.2.3",
     "@umijs/plugins": "^4.0.72",
     "abortcontroller-polyfill": "^1.7.5",
     "ahooks": "^3.7.8",
+    "antd": "^5.6.4",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "monaco-editor": "^0.38.0",
