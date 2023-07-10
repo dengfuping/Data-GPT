@@ -7,7 +7,7 @@ import {
   FieldStringOutlined,
   FieldTimeOutlined,
   TableOutlined,
-} from '@ant-design/icons';
+} from '@oceanbase/icons';
 import { Card, Col, Input, Row, Tree } from '@oceanbase/design';
 import { PageContainer } from '@oceanbase/ui';
 import { useRequest } from 'ahooks';

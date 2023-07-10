@@ -5,7 +5,7 @@ import {
   HistoryOutlined,
   PieChartOutlined,
   TableOutlined,
-} from '@ant-design/icons';
+} from '@oceanbase/icons';
 import {
   Button,
   Card,
