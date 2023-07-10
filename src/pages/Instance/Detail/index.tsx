@@ -8,9 +8,10 @@ import {
   FieldTimeOutlined,
   TableOutlined,
 } from '@ant-design/icons';
-import { Card, Col, Input, PageContainer, Row, Tree } from '@oceanbase/design';
+import { Card, Col, Input, Row, Tree } from '@oceanbase/design';
+import { PageContainer } from '@oceanbase/ui';
 import { useRequest } from 'ahooks';
-import type { DataNode } from 'antd/es/tree';
+import type { DataNode } from '@oceanbase/design/es/tree';
 import { toLower } from 'lodash';
 import React, { useState } from 'react';
 import { history } from 'umi';

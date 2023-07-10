@@ -1,6 +1,6 @@
 import { useBasicMenu } from '@/hooks/useMenu';
-import { BasicLayout as OBUIBasicLayout } from '@oceanbase/design';
-import type { BasicLayoutProps as OBUIBasicLayoutProps } from '@oceanbase/design/es/BasicLayout';
+import { BasicLayout as OBUIBasicLayout } from '@oceanbase/ui';
+import type { BasicLayoutProps as OBUIBasicLayoutProps } from '@oceanbase/ui/es/BasicLayout';
 import { find } from 'lodash';
 import React from 'react';
 import { Outlet, useLocation } from 'umi';

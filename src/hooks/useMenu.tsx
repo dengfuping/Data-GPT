@@ -1,6 +1,6 @@
 import IconFont from '@/components/IconFont';
-import type { MenuItem } from '@oceanbase/design/es/BasicLayout';
-import { Lottie } from '@oceanbase/design';
+import type { MenuItem } from '@oceanbase/ui/es/BasicLayout';
+import { Lottie } from '@oceanbase/ui';
 import React from 'react';
 
 export const useBasicMenu = (): MenuItem[] => {

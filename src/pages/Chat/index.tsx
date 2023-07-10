@@ -1,5 +1,5 @@
 import useDocumentTitle from '@/hooks/useDocumentTitle';
-import { PageContainer } from '@oceanbase/design';
+import { PageContainer } from '@oceanbase/ui';
 import React from 'react';
 
 interface ChatProps {}

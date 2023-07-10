@@ -8,10 +8,10 @@ import {
   InputNumber,
   message,
   Modal,
-  PageContainer,
   Space,
   Table,
 } from '@oceanbase/design';
+import { PageContainer } from '@oceanbase/ui';
 import { useRequest } from 'ahooks';
 import React, { useState } from 'react';
 import { history } from 'umi';

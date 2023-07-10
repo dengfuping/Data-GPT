@@ -1,5 +1,5 @@
-import { Password } from '@oceanbase/design';
-import type { PasswordProps } from '@oceanbase/design/es/Password';
+import { Password } from '@oceanbase/ui';
+import type { PasswordProps } from '@oceanbase/ui/es/Password';
 import React from 'react';
 import { formatMessage } from 'umi';
 

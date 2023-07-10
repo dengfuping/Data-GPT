@@ -10,31 +10,30 @@
     "start": "npm run dev"
   },
   "dependencies": {
-    "@ant-design/charts": "^1.4.2",
-    "@oceanbase/charts": "^0.1.0",
-    "@oceanbase/design": "^0.1.1",
-    "@oceanbase/util": "^0.1.0",
-    "@umijs/plugins": "^4.0.70",
+    "@oceanbase/charts": "^0.2.5",
+    "@oceanbase/design": "^0.2.11",
+    "@oceanbase/ui": "^0.2.12",
+    "@oceanbase/util": "^0.2.3",
+    "@umijs/plugins": "^4.0.72",
     "abortcontroller-polyfill": "^1.7.5",
-    "ahooks": "^3.7.7",
-    "antd": "^5.5.2",
+    "ahooks": "^3.7.8",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "monaco-editor": "^0.38.0",
     "monaco-editor-webpack-plugin": "^7.0.1",
     "react-monaco-editor": "^0.52.0",
-    "umi": "^4.0.69"
+    "umi": "^4.0.72"
   },
   "devDependencies": {
-    "@types/react": "^18.2.7",
-    "@types/react-dom": "^18.2.4",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
     "@umijs/fabric": "^4.0.1",
-    "eslint": "^8.41.0",
-    "husky": "^8",
-    "lint-staged": "^13",
-    "prettier": "^2",
-    "prettier-plugin-organize-imports": "^2",
-    "prettier-plugin-packagejson": "^2",
-    "typescript": "^4"
+    "eslint": "^8.44.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "prettier": "^2.8.8",
+    "prettier-plugin-organize-imports": "^2.3.4",
+    "prettier-plugin-packagejson": "^2.4.4",
+    "typescript": "^4.9.5"
   }
 }
