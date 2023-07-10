@@ -5,6 +5,10 @@ import routes from './routes';
 export default defineConfig({
   routes,
   npmClient: 'pnpm',
+  // Enable API route and deploy to vercel
+  apiRoute: {
+    platform: 'vercel',
+  },
   plugins: ['@umijs/plugins/dist/request', '@umijs/plugins/dist/locale'],
   request: {
     dataField: '',
