@@ -1,15 +1,19 @@
 import { request } from 'umi';
+import type { Prisma } from '@prisma/client';
 
-export async function listInstances(params, options?: Record<string, any>) {
-  return request('/api/v1/instances', {
+export async function listConnections(params, options?: Record<string, any>) {
+  return request('/api/connections', {
     method: 'GET',
     params,
     ...(options || {}),
   });
 }
 
-export async function createInstance(body, options?: Record<string, any>) {
-  return request('/api/v1/instances', {
+export async function createConnection(
+  body: Prisma.ConnectionCreateInput,
+  options?: Record<string, any>,
+) {
+  return request('/api/connections', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -19,14 +23,14 @@ export async function createInstance(body, options?: Record<string, any>) {
   });
 }
 
-export async function getInstance(
+export async function getConnection(
   params: {
-    instanceId: number;
+    connectionId: number;
   },
   options?: Record<string, any>,
 ) {
-  const { instanceId, ...queryParams } = params;
-  return request(`/api/v1/instances/${instanceId}`, {
+  const { connectionId, ...queryParams } = params;
+  return request(`/api/connections/${connectionId}`, {
     method: 'GET',
     params: {
       ...queryParams,
@@ -35,15 +39,15 @@ export async function getInstance(
   });
 }
 
-export async function updateInstance(
+export async function updateConnection(
   params: {
-    instanceId: number;
+    connectionId: number;
   },
-  body,
+  body: Prisma.ConnectionUpdateInput,
   options?: Record<string, any>,
 ) {
-  const { instanceId, ...queryParams } = params;
-  return request(`/api/v1/instances/${instanceId}`, {
+  const { connectionId, ...queryParams } = params;
+  return request(`/api/connections/${connectionId}`, {
     method: 'PATCH',
     params: {
       ...queryParams,
@@ -53,14 +57,14 @@ export async function updateInstance(
   });
 }
 
-export async function deleteInstance(
+export async function deleteConnection(
   params: {
-    instanceId: number;
+    connectionId: number;
   },
   options?: Record<string, any>,
 ) {
-  const { instanceId, ...queryParams } = params;
-  return request(`/api/v1/instances/${instanceId}`, {
+  const { connectionId, ...queryParams } = params;
+  return request(`/api/v1/connections/${connectionId}`, {
     method: 'DELETE',
     params: {
       ...queryParams,
@@ -71,16 +75,15 @@ export async function deleteInstance(
 
 export async function executeSql(
   params: {
-    instanceId: number;
+    connectionId: number;
   },
   body: {
     sql: string;
-    database?: string;
   },
   options?: Record<string, any>,
 ) {
-  const { instanceId, ...queryParams } = params;
-  return request(`/api/v1/instances/${instanceId}/executeSql`, {
+  const { connectionId, ...queryParams } = params;
+  return request(`/api/connections/${connectionId}/executeSql`, {
     method: 'POST',
     params: {
       ...queryParams,
@@ -92,16 +95,15 @@ export async function executeSql(
 
 export async function executeText(
   params: {
-    instanceId: number;
+    connectionId: number;
   },
   body: {
     text: string;
-    database?: string;
   },
   options?: Record<string, any>,
 ) {
-  const { instanceId, ...queryParams } = params;
-  return request(`/api/v1/instances/${instanceId}/executeText`, {
+  const { connectionId, ...queryParams } = params;
+  return request(`/api/connections/${connectionId}/executeText`, {
     method: 'POST',
     params: {
       ...queryParams,

@@ -1,5 +1,5 @@
 import Chart from '@/components/Chart';
-import * as InstanceController from '@/services/oda/InstanceController';
+import * as ConnectionController from '@/services/ConnectionController';
 import {
   CaretRightOutlined,
   HistoryOutlined,
@@ -25,8 +25,8 @@ import React, { useEffect, useState } from 'react';
 import MonacoEditor from 'react-monaco-editor';
 
 interface SqlEditorProps {
-  instanceId: number;
-  instance: any;
+  connectionId: number;
+  connection: any;
   onSuccess?: () => void;
 }
 
@@ -36,8 +36,8 @@ function customeToNumber(value?: string | number) {
 }
 
 const SqlEditor: React.FC<SqlEditorProps> = ({
-  instanceId,
-  instance,
+  connectionId,
+  connection,
   onSuccess,
 }) => {
   const [text, setText] = useState('');
@@ -50,31 +50,27 @@ const SqlEditor: React.FC<SqlEditorProps> = ({
 
   // 执行 SQL
   const { run: executeText, loading: executeTextLoading } = useRequest(
-    InstanceController.executeText,
+    ConnectionController.executeText,
     {
       manual: true,
       onSuccess: (res) => {
-        if (res.success) {
-          setSql(res?.data?.sql);
-          setDataSource(res?.data?.rows || []);
-          if (onSuccess) {
-            onSuccess();
-          }
+        setSql(res?.sql);
+        setDataSource(res?.rows || []);
+        if (onSuccess) {
+          onSuccess();
         }
       },
     },
   );
   // 执行 SQL
   const { run: executeSql, loading: executeSqlLoading } = useRequest(
-    InstanceController.executeSql,
+    ConnectionController.executeSql,
     {
       manual: true,
       onSuccess: (res) => {
-        if (res.success) {
-          setDataSource(res?.data?.rows || []);
-          if (onSuccess) {
-            onSuccess();
-          }
+        setDataSource(res?.rows || []);
+        if (onSuccess) {
+          onSuccess();
         }
       },
     },
@@ -113,7 +109,7 @@ const SqlEditor: React.FC<SqlEditorProps> = ({
             setText(value);
             executeText(
               {
-                instanceId,
+                connectionId,
               },
               {
                 text: value,
@@ -135,7 +131,7 @@ const SqlEditor: React.FC<SqlEditorProps> = ({
             setSql(value);
             executeSql(
               {
-                instanceId,
+                connectionId,
               },
               {
                 sql: value,
@@ -201,7 +197,7 @@ const SqlEditor: React.FC<SqlEditorProps> = ({
             onClick={() => {
               executeSql(
                 {
-                  instanceId,
+                  connectionId,
                 },
                 {
                   sql,
@@ -228,7 +224,7 @@ const SqlEditor: React.FC<SqlEditorProps> = ({
                 onClick={() => {
                   executeText(
                     {
-                      instanceId,
+                      connectionId,
                     },
                     {
                       text,
@@ -516,7 +512,7 @@ const SqlEditor: React.FC<SqlEditorProps> = ({
           <Table
             size="small"
             bordered={true}
-            dataSource={instance.executions}
+            dataSource={connection.executions}
             columns={executionColumns}
             rowKey={(record) => record.id}
             pagination={{

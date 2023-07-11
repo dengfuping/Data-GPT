@@ -108,7 +108,6 @@ const Chart: React.FC<ChartProps> = ({
             shared: true,
             enterable: true,
             // 允许鼠标滑入 tooltip 会导致框选很难选中区间，因此加大鼠标和 tooltip 之间的间距，以缓解该问题
-            // issue: https://aone.alipay.com/issue/40683708
             offset: 40,
             domStyles: {
               'g2-tooltip': {
@@ -125,7 +124,6 @@ const Chart: React.FC<ChartProps> = ({
     },
     style: {
       // 设置 style 会直接覆盖掉官方默认样式，设置 overflow 为 visible，暂时解决 tooltip 被遮挡的问题
-      // issue:https://aone.alipay.com/v2/project/742021/bug/100279157
       height: 'inherit',
       overflow: 'visible',
       ...style,

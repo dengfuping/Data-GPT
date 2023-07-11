@@ -1,5 +1,5 @@
 import useDocumentTitle from '@/hooks/useDocumentTitle';
-import * as InstanceController from '@/services/oda/InstanceController';
+import * as ConnectionController from '@/services/ConnectionController';
 import {
   DatabaseOutlined,
   FieldBinaryOutlined,
@@ -10,50 +10,38 @@ import {
 } from '@oceanbase/icons';
 import { Card, Col, Input, Row, Tree } from '@oceanbase/design';
 import { PageContainer } from '@oceanbase/ui';
-import { useRequest } from 'ahooks';
+// import { useRequest } from 'ahooks';
 import type { DataNode } from '@oceanbase/design/es/tree';
-import { toLower } from 'lodash';
+import { toLower, toNumber } from 'lodash';
 import React, { useState } from 'react';
-import { history } from 'umi';
+import { history, useParams, useRequest } from 'umi';
 import SqlEditor from './SqlEditor';
 
-interface InstanceProps {
-  match: {
-    params: {
-      instanceId: number;
-    };
-  };
-}
+interface DetailProps {}
 
-const Instance: React.FC<InstanceProps> = ({
-  match: {
-    params: { instanceId },
-  },
-}) => {
-  useDocumentTitle('实例详情');
+const Detail: React.FC<DetailProps> = () => {
+  useDocumentTitle('Connection Detail');
+
+  const { connectionId } = useParams();
 
   const [expandedKeys, setExpandedKeys] = useState<React.Key[]>([]);
   const [autoExpandParent, setAutoExpandParent] = useState(false);
 
-  // 获取实例详情
-  const { data: instanceData, refresh: getInstanceRefresh } = useRequest(
-    InstanceController.getInstance,
+  const { data: connectionData, refresh: getConnectionRefresh } = useRequest(
+    ConnectionController.getConnection,
     {
       defaultParams: [
         {
-          instanceId,
+          connectionId: toNumber(connectionId),
         },
       ],
       onSuccess: (res) => {
-        if (res.success) {
-          const databaseNames =
-            res.data?.databases?.map((item) => item.name) || [];
-          setExpandedKeys(databaseNames);
-        }
+        const databaseNames = res.databases?.map((item) => item.name) || [];
+        setExpandedKeys(databaseNames);
       },
     },
   );
-  const instance = instanceData?.data || {};
+  const connection = connectionData?.data || {};
 
   const dataTypeIconList = [
     {
@@ -109,7 +97,7 @@ const Instance: React.FC<InstanceProps> = ({
   ];
 
   const treeData =
-    instance.databases?.map((database) => ({
+    connection.databases?.map((database) => ({
       key: database.name,
       title: database.name,
       icon: <DatabaseOutlined />,
@@ -159,18 +147,18 @@ const Instance: React.FC<InstanceProps> = ({
   return (
     <PageContainer
       header={{
-        title: instance.name,
+        title: connection.name,
         onBack: () => {
-          history.goBack();
+          history.back();
         },
         breadcrumb: {
           items: [
             {
-              title: '实例列表',
-              path: '/instance',
+              title: 'Connection',
+              path: '/connection',
             },
             {
-              title: '实例详情',
+              title: 'Detail',
             },
           ],
         },
@@ -218,10 +206,10 @@ const Instance: React.FC<InstanceProps> = ({
         </Col>
         <Col span={18}>
           <SqlEditor
-            instanceId={instanceId}
-            instance={instance}
+            connectionId={toNumber(connectionId)}
+            connection={connection}
             onSuccess={() => {
-              getInstanceRefresh();
+              getConnectionRefresh();
             }}
           />
         </Col>
@@ -230,4 +218,4 @@ const Instance: React.FC<InstanceProps> = ({
   );
 };
 
-export default Instance;
+export default Detail;

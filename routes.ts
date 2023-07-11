@@ -9,15 +9,15 @@ export default [
         routes: [
           {
             path: '/',
-            redirect: '/instance',
+            redirect: '/connection',
           },
           {
-            path: 'instance/:instanceId',
-            component: 'Instance/Detail',
+            path: 'connection/:connectionId',
+            component: 'Connection/Detail',
           },
           {
-            path: 'instance',
-            component: 'Instance',
+            path: 'connection',
+            component: 'Connection',
           },
           {
             path: 'chat',

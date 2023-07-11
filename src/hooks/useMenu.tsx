@@ -6,8 +6,8 @@ import React from 'react';
 export const useBasicMenu = (): MenuItem[] => {
   return [
     {
-      link: '/instance',
-      title: '实例',
+      link: '/connection',
+      title: 'Connection',
       icon: <IconFont type="cluster" />,
       selectedIcon: <IconFont type="cluster-colored" />,
     },

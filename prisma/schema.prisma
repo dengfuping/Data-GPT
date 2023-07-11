@@ -1,0 +1,34 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
+}
+
+model Connection {
+    id           Int         @id @default(autoincrement())
+    name         String
+    host         String      @db.Text
+    port         Int
+    user         String
+    passwordHash String      @map("password_hash")
+    database     String
+    createdAt    DateTime    @default(now()) @map("created_at")
+    updatedAt    DateTime    @updatedAt @map("updated_at")
+    executions   Execution[]
+}
+
+model Execution {
+    id           Int        @id @default(autoincrement())
+    connection   Connection @relation(fields: [connectionId], references: [id])
+    connectionId Int        @map("connection_id")
+    text         String     @db.Text
+    sql          String     @db.Text
+    createdAt    DateTime   @default(now()) @map("created_at")
+    updatedAt    DateTime   @updatedAt @map("updated_at")
+
+    @@index(connectionId)
+}
