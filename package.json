@@ -2,7 +2,7 @@
   "private": true,
   "author": "dengfuping <dengfuping_private@163.com>",
   "scripts": {
-    "build": "prisma generate && umi build",
+    "build": "umi build",
     "dev": "umi dev",
     "postinstall": "umi setup",
     "prepare": "husky install",
